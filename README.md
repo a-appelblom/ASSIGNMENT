@@ -22,11 +22,11 @@
 
 
 # KRAV.
-* #### Minst 2 "routes/endpoints" för att hämta olika typer av data (GET)
-* #### Minst 2 "routes/endpoints" för att skapa data (POST)
-* #### Minst 1 "route/endpoints" för att uppdatera data (PUT)
-* #### Minst 1 "route/endpoints" för att ta bort data (DELETE)
-* #### Koppling till en databas
+- [ ]  Minst 2 "routes/endpoints" för att hämta olika typer av data (GET)
+- [ ]  Minst 2 "routes/endpoints" för att skapa data (POST)
+- [ ]  Minst 1 "route/endpoints" för att uppdatera data (PUT)
+- [ ]  Minst 1 "route/endpoints" för att ta bort data (DELETE)
+- [ ]  Koppling till en databas
 
     ## Övrigt.
 
