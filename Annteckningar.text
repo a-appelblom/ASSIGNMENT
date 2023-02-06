@@ -1,0 +1,97 @@
+MÅL: 
+Att bygga en databas från grunden.
+Fylla den med agenter. 
+    2 tabels. 
+    15 agenter.
+
+Alternativt. 
+    Bygga ett skript som gör att man kan aktivera agenterna och en timer startar.
+    - Tiden loggas i datbasen vid avaktiverein.
+_______________________________________________________________________________________
+#######################################################################################
+>PATH: 
+* gjort filerna MAIN, DB, API... 
+* installerat uvicorn, alchemy, FastAPI.
+* Vilka behöver jag egentligen? Det får vi se under tiden...
+- När aktiverar jag uvicorn och vart? I vilken fil? Den med APP, men om den inte heter app?
+    Kan den då heta Base? NEj det är nog bara databasen... App är funktionen som är del av 
+    API tror jag. 
+
+- Nu är jag fast i vad första steget borde vara ... 
+
+- har aktiverat uvicorn och fixar en app som körs på API url. http://127.0.0.1:8000 
+
+- nu activerar jag uvicorn med min APP = fastAPI() i main filen men vill veta om det namnet går att byta och använda i andra funktooner?? 
+    
+    * The command uvicorn main:app refers to:
+        main: the file main.py (the Python "module").
+        app: the object created inside of main.py with the line app = FastAPI().
+        --reload: make the server restart after code changes. Only use for development.
+
+Denna text kanske kan hjälpa mig förstå hur jag aktivear en api kontakt när jag skriver alchemy??
+
+
+
+
+
+
+
+##############################
+######## TVÅ SAKER ########### 
+FAST api är själv dokumneterande va?? hur fan komer jag åt den? 
+
+Jag har inte kollat på lektion 10 och 11. 
+
+
+
+STEG 1 
+[x] aktivera en venv i mappen för slutprojectet.
+** GLÖM INTE ATT PUSH ORIGIN MAIN efter varje dag.
+
+
+STEG 2 
+* jag börjar med att bygga en databas i din virituella miljö
+[] strukturen.
+
+
+
+STEG 3 
+* pupulera databasen via ett API ? 
+
+
+STEG 4
+* Bygg kod som kan 
+
+
+
+****************************FRÅGETECKEN*************************************
+****************************************************************************
+****************************************************************************
+** VAD MENAS MED BIBLIOTEK ? *************
+
+* Libraries in Python are usually distributed as packages and can be installed using a package manager like pip.
+
+    a library refers to a collection of pre-written code that you can use in your own code. 
+        Libraries provide functionality that you can use without having to write all of the code from scratch.
+
+
+
+
+# WHAT I NEED ?
+SQLAlchemy - An Object-Relational Mapping (ORM) tool for interacting with databases in Python.
+
+A database management system such as PostgreSQL, MySQL, or SQLite - For storing and retrieving data in a structured manner.
+
+A package manager such as pip - For installing and managing dependencies.
+ -  Note: You can install these packages by running pip install flask sqlalchemy in the terminal.
+
+############ NOT USIGN THIS BUT GOOD TO KNOW ###############
+ Flask - A micro web framework for building APIs in Python.
+############################################################
+
+??????
+sqlite3
+????????
+FastAPI
+??????
+mysql
