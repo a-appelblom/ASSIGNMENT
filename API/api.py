@@ -32,7 +32,7 @@ import sqlite3
 # http://127.0.0.1:8000  (Press CTRL+C to quit)
 app = FastAPI()
 
-@app.get("/")
+@app.get("/") # detta är fråm lektionen med API så fortsätt kolla på den! 
 def root():
     return {"message: Hellw world!"} 
 

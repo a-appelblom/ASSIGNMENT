@@ -10,6 +10,7 @@ Alternativt.
 _______________________________________________________________________________________
 #######################################################################################
 >PATH: 
+06/02/2023
 * gjort filerna MAIN, DB, API... 
 * installerat uvicorn, alchemy, FastAPI.
 * Vilka behöver jag egentligen? Det får vi se under tiden...
@@ -29,6 +30,11 @@ ________________________________________________________________________________
         --reload: make the server restart after code changes. Only use for development.
 
 Denna text kanske kan hjälpa mig förstå hur jag aktivear en api kontakt när jag skriver alchemy??
+
+- Jag tror att vi nu har en API koppling och behöver bygga en databas. 
+
+- Därefter kommer programmet som ska aktivera tiden för varje agent. 
+
 
 
 

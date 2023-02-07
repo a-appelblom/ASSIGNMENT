@@ -1,0 +1,53 @@
+MÅL: 
+Att bygga en databas från grunden.
+Fylla den med agenter. 
+    2 tabels. 
+    15 agenter.
+
+Alternativt. 
+    Bygga ett skript som gör att man kan aktivera agenterna och en timer startar.
+    - Tiden loggas i datbasen vid avaktiverein.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_______________________________________________________________________________________
+#######################################################################################
+>PATH: 
+06/02/2023
+* gjort filerna MAIN, DB, API... 
+* installerat uvicorn, alchemy, FastAPI.
+* Vilka behöver jag egentligen? Det får vi se under tiden...
+- När aktiverar jag uvicorn och vart? I vilken fil? Den med APP, men om den inte heter app?
+    Kan den då heta Base? NEj det är nog bara databasen... App är funktionen som är del av 
+    API tror jag. 
+
+- Nu är jag fast i vad första steget borde vara ... 
+
+- har aktiverat uvicorn och fixar en app som körs på API url. http://127.0.0.1:8000 
+
+- nu activerar jag uvicorn med min APP = fastAPI() i main filen men vill veta om det namnet går att byta och använda i andra funktooner?? 
+    
+    * The command uvicorn main:app refers to:
+        main: the file main.py (the Python "module").
+        app: the object created inside of main.py with the line app = FastAPI().
+        --reload: make the server restart after code changes. Only use for development.
+
+Denna text kanske kan hjälpa mig förstå hur jag aktivear en api kontakt när jag skriver alchemy??
+
+- Jag tror att vi nu har en API koppling och behöver bygga en databas. 
+
+- Därefter kommer programmet som ska aktivera tiden för varje agent. 
