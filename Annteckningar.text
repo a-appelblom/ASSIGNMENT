@@ -35,6 +35,264 @@ Denna text kanske kan hjälpa mig förstå hur jag aktivear en api kontakt när 
 
 - Därefter kommer programmet som ska aktivera tiden för varje agent. 
 
+07/02/2023////////////////////////////////////////////////////////////////// 
+
+- nu jävlar har jag börjat om lite. Jag har svårt att hitta logicen i vart man ska börja..
+- jag har skapat en databas i filen MAIN.py med sqlalchemy. 
+
+- Denna vill jag nu mata med inputs eller POST som det heter. 
+
+PROBLEM. 
+
+- koppla databasen med ett API. 
+    - själva logiken där. Hur kopplar jag databsen så jag kan se den i requests? 
+        - spelar det någon roll om jag byggt den i sql alchemy? 
+
+jag förtsätter att gå efter Antons tutorial API. 
+
+
+08/02/2023////////////////////////////////////////////////////////////////
+
+ETT jävla strul med att lista ut hur jag ska koppla min databas till API 
+Försökte lägga in databskapandet i en class och har nu lyckats med det. 
+Ska testa att koppla nu.... Genom att kolla på Antons VIDEO. 
+
+- Nu skapde jag detta i api.py:
+
+        from fastapi import FastAPI
+        from pydantic import BaseModel
+        import os
+
+        from db import DB
+
+        # Här ska vi bygga routs.
+        app = FastAPI()
+        db = DB("Agents.db")
+
+- och startade uvicorn i den filen. ... 
+
+        Bananberg@LAPTOP-NCTRL65L MINGW64 /c/USers/Bananberg/Desktop/Python_ass/API (main)
+        $ pipenv shell
+        Shell for C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC already activated.
+        No action taken to avoid nested environments.
+
+        Bananberg@LAPTOP-NCTRL65L MINGW64 /c/USers/Bananberg/Desktop/Python_ass/API (main)
+        $ uvicorn api:app --realod
+        Usage: uvicorn [OPTIONS] APP
+        Try 'uvicorn --help' for help.
+
+        Error: No such option: --realod (Possible options: --reload, --reload-delay, --reload-dir)
+
+        Bananberg@LAPTOP-NCTRL65L MINGW64 /c/USers/Bananberg/Desktop/Python_ass/API (main)
+        $ uvicorn api:app --reload
+        INFO:     Will watch for changes in these directories: ['C:\\USers\\Bananberg\\Desktop\\Python_ass\\API']
+        INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+        INFO:     Started reloader process [26836] using StatReload
+        Engine(sqlite:///Agents.db)
+        2023-02-08 11:12:32,426 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+        2023-02-08 11:12:32,426 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+        2023-02-08 11:12:32,426 INFO sqlalchemy.engine.Engine [raw sql] ()
+        2023-02-08 11:12:32,430 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")
+        2023-02-08 11:12:32,430 INFO sqlalchemy.engine.Engine [raw sql] ()
+        2023-02-08 11:12:32,430 INFO sqlalchemy.engine.Engine COMMIT
+        INFO:     Started server process [11740]
+        INFO:     Waiting for application startup.
+        INFO:     Application startup complete.
+
+
+- När jag körde scriptet: 
+
+    #########################################################################################
+    def call_db(query: str, *args):                                                         # Detta
+        connection = sqlite3.connect("Agents.db")                                              # är 
+        cursor = connection.cursor()  ###############                                       # själva kopplingen till 
+        res = cursor.execute(query, args)           # Denna funktion hämtar data            # databasen 
+        data = res.fetchall()                       # från databas med cursorn.             # som 
+        cursor.close ################################                                       # skapats 
+        connection.commit()                                                                 #        
+        connection.close()                                                                  #
+        return data                                                                         #
+    ######################
+
+
+- i min api fil.  Hände detta: 
+
+    Bananberg@LAPTOP-NCTRL65L MINGW64 ~/Desktop/Python_ass (main)
+    $ source c:/Users/Bananberg/.virtualenvs/api-MAcX5AkC/Scripts/activate
+    (API) 
+    Bananberg@LAPTOP-NCTRL65L MINGW64 ~/Desktop/Python_ass (main)
+    $ c:/Users/Bananberg/.virtualenvs/api-MAcX5AkC/Scripts/python.exe c:/Users/Bananberg/Desktop/Python_ass/API/api.py
+    Engine(sqlite:///Agents.db)
+    2023-02-08 11:20:02,056 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+    2023-02-08 11:20:02,057 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+    2023-02-08 11:20:02,057 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:20:02,058 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("agents")
+    2023-02-08 11:20:02,058 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:20:02,059 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")
+    2023-02-08 11:20:02,059 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:20:02,059 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("agent_info")
+    2023-02-08 11:20:02,061 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:20:02,061 INFO sqlalchemy.engine.Engine 
+    CREATE TABLE agents (
+            id INTEGER NOT NULL,
+            agent_id VARCHAR(3),
+            active_service BOOLEAN,
+            PRIMARY KEY (id)
+    )
+
+
+    2023-02-08 11:20:02,065 INFO sqlalchemy.engine.Engine [no key 0.00272s] ()
+    2023-02-08 11:20:02,081 INFO sqlalchemy.engine.Engine 
+    CREATE TABLE agent_info (
+            id INTEGER NOT NULL,
+            first_name VARCHAR(100),
+            last_name VARCHAR(100),
+            agent_id INTEGER,
+            active_service TIME,
+            PRIMARY KEY (id),
+            FOREIGN KEY(agent_id) REFERENCES agents (id)
+    )
+
+
+    2023-02-08 11:20:02,084 INFO sqlalchemy.engine.Engine [no key 0.00326s] ()
+    2023-02-08 11:20:02,093 INFO sqlalchemy.engine.Engine COMMIT
+    Traceback (most recent call last):
+    File "c:\Users\Bananberg\Desktop\Python_ass\API\api.py", line 9, in <module>
+        db = DB("Agents.db")
+            ^^^^^^^^^^^^^^^
+    TypeError: DB() takes no arguments    ##### JAG KOMENTERADE UT DENNA OCH KÖRDE IGEN. 
+    (API)
+    Bananberg@LAPTOP-NCTRL65L MINGW64 ~/Desktop/Python_ass (main)
+    $ c:/Users/Bananberg/.virtualenvs/api-MAcX5AkC/Scripts/python.exe c:/Users/Bananberg/Desktop/Python_ass/API/api.py
+    Engine(sqlite:///Agents.db)
+    2023-02-08 11:21:29,335 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+    2023-02-08 11:21:29,335 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+    2023-02-08 11:21:29,342 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:21:29,344 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")
+    2023-02-08 11:21:29,345 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:21:29,347 INFO sqlalchemy.engine.Engine COMMIT
+    (API)
+    Bananberg@LAPTOP-NCTRL65L MINGW64 ~/Desktop/Python_ass (main)
+    $ cd API/
+    (API)
+    Bananberg@LAPTOP-NCTRL65L MINGW64 ~/Desktop/Python_ass/API (main)
+    $ c:/Users/Bananberg/.virtualenvs/api-MAcX5AkC/Scripts/python.exe c:/Users/Bananberg/Desktop/Python_ass/API/api.py
+    Engine(sqlite:///Agents.db)
+    2023-02-08 11:22:34,331 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+    2023-02-08 11:22:34,332 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+    2023-02-08 11:22:34,333 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:22:34,336 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")
+    2023-02-08 11:22:34,337 INFO sqlalchemy.engine.Engine [raw sql] ()
+    2023-02-08 11:22:34,339 INFO sqlalchemy.engine.Engine COMMIT
+    (API) 
+    Bananberg@LAPTOP-NCTRL65L MINGW64 ~/Desktop/Python_ass/API (main)
+    $
+
+- det jag inte förstår är om nag har en koppling nu.... 
+
+- jag har i min db.py lagt till denna kod nu: 
+
+    def __call_db(self, query):                                                         
+            connection = sqlite3.connect(self.db_url)                                              
+            cursor = connection.cursor()                                     
+            res = cursor.execute(query)           
+            data = res.fetchall()                                
+            cursor.close                                    
+            connection.commit()                                                                         
+            connection.close()                                                                  
+            return data           
+
+- men jag vet inte exkat vad den gör, den ligger innanför klassen som skapar min databas. 
+- Det känns inte rätt att ha en klass som skapar min databs hela tiden.... så det tar vi bort nu. 
+
+- Jag har nu laggt ovanstående kod i db_connet och skapat en klass som heter DB. 
+- Den DB är sedan impotrerad i api.py och inom den är databas namn lagd lagd. 
+
+- detta funkar inte då jag får ett felmedelande som säger: 
+
+    WARNING:  StatReload detected changes in 'db_connect.py'. Reloading...
+    Process SpawnProcess-13:
+    Traceback (most recent call last):
+    File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+        self.run()
+    File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+        self._target(*self._args, **self._kwargs)
+    File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+        target(sockets=sockets)
+    File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+        return asyncio.run(self.serve(sockets=sockets))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+        return runner.run(main)
+            ^^^^^^^^^^^^^^^^
+    File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+        return self._loop.run_until_complete(task)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+        return future.result()
+            ^^^^^^^^^^^^^^^
+    File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+        config.load()
+    File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+        self.loaded_app = import_from_string(self.app)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+        module = importlib.import_module(module_str)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+        return _bootstrap._gcd_import(name[level:], package, level)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+    File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+    File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+    File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 10, in <module>
+        db = DB("sqlite:///Agents.db")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\USers\Bananberg\Desktop\Python_ass\API\db_connect.py", line 13, in __init__
+        self.__set_up_db()
+        ^^^^^^^^^^^^^^^^
+    AttributeError: 'DB' object has no attribute '_DB__set_up_db'
+
+
+- BACK TRACK!! 
+- jag har nu delat upp lite. Det är detta som varit svårt men nu tror jag jag förstår lite mer. 
+
+- databsen är byggd och skapad. Den är byggd i db-py och är tom. 
+
+- i api.py ligger denna kod: 
+
+    app = FastAPI()
+
+    def call_db(query: str, *args):
+        connection = sqlite3.connect("Agnets.db")
+        cursor = connection.cursor()
+        res = cursor.execute(query, args)
+        data = res.fetchall()
+        cursor.close()
+        connection.commit()
+        connection.close()
+        return data
+
+- Detta tycks funka, jag har inte activerat uvicorn än. 
+
+- när jag körde skriptet så skapades en __pycache__ med en connet fil. 
+
+- jag startar uvicorn och ser vad som händer. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

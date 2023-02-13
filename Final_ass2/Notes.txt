@@ -1,0 +1,58 @@
+
+
+- jag startar pipenv 
+och installerade sqlalchemy vid start. 
+
+
+- Skapat filerna: 
+______________
+* CONNECT_BD.PY
+- Här har jag vad jag tror är kontakten med databasen.. 
+- den som ska contecta med API senare?? 
+___________________
+* MODELS_DB.PY
+HÄR KODAS ENLIGT sqlalchemy PRINCIP 
+- Koden här är alla tables och columns som behövs i databasen ( Eller de som jag vill komma åt med hjälp av API senare?? ) 
+- De är skapde i klasser som API kan aknvända sig av ??? 
+________________
+*SCHEMAS_DB.PY
+HÄR KODAS ENLIGT pydentic PRINCIP 
+- Här har jag skapat modeller som går att använda i andra filer( tex. av API ?? för att Hämta data ?? skapa data?? (Alltså att dessa modeller visar vad jag kan komma åt i varje modell? 
+Tex:        # en info modell 
+            class AgnetsBase(BaseModel): 
+                id: int
+                agents_id: int
+                active_service: bool            # vad denna säger är kanske att vi, om vi kallar på klassen kan få info om id , agent_id och active_service ?? 
+
+
+
+______________________________________________________________________________________________________________________________________________________
+SIDE NOTE:                                      SQLAlchemy style and Pydantic style
+                                                Notice that SQLAlchemy models define attributes using =, and pass the type as a parameter to Column, like in:
+
+                                                name = Column(String)
+                                                while Pydantic models declare the types using :, the new type annotation syntax/type hints:
+
+                                                name: str
+                                                Have it in mind, so you don't get confused when using = and : with them.
+______________________________________________________________________________________________________________________________________________________
+
+_______________________________________________________________________________________________________________________________________________________
+SIDE NOTE:  pydentic config. function förklaring.                                     
+                                                class MyConfig: ####################################
+                                                    max_anystr_length = 10
+                                                    validate_assignment = True
+                                                    error_msg_templates = {
+                                                        'value_error.any_str.max_length': 'max_length:{limit_value}',
+                                                    }
+Koden ovan skapar en klass av pydentics config function som ger villkår på vad som får läggas till 
+Som i exemplet dataclass
+                                                @dataclass(config=MyConfig) ##################
+                                                class User:
+                                                    id: int
+                                                    name: str = 'John Doe'
+                                                    signup_ts: datetime = None
+
+
+                                                                                 
+                                                                                                

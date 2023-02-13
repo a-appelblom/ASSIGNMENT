@@ -1,0 +1,330 @@
+
+Building a rest API with sqlalchemy, fastAPI and uvicorn 
+https://dassum.medium.com/building-rest-apis-using-fastapi-sqlalchemy-uvicorn-8a163ccf3aa1
+
+fastAPI docs.
+https://fastapi.tiangolo.com/
+
+
+sqlalchemy
+https://docs.sqlalchemy.org/en/20/tutorial/engine.html
+
+What is sqlalchemy? 
+- SQLAlchemy is a library that facilitates the communication between Python programs and databases. 
+    Most of the times, this library is used as an Object Relational Mapper (ORM) tool that translates 
+    Python classes to tables on relational databases and automatically converts function calls to SQL statements.
+
+
+flask docs. 
+https://flask.palletsprojects.com/en/2.2.x/quickstart/#
+
+
+
+
+#################### PROJECT ########################
+
+# maybe i should try to put in a user and a password to acsess it? 
+
+from sqlalchemy import create_engine
+engine = create_engine("sqlite:///agents.db", echo=True)        
+    # The Engine, when first returned by create_engine(), has not actually tried to connect to the database yet; that   happens only the first time it is asked to perform a task against the database. This is a software design pattern known as lazy initialization.
+
+
+with engine.connect() as conn:
+ result = conn.execute(text("select 'hello world'"))
+print(result.all())
+
+# ett frösöekr att förenkla koden ovan.
+# conn = engine.connect()
+# conn: result = conn.execute(text("Select 'Hello"))
+# print(result.all())
+
+
+
+###############################################
+################ ÖVERGIVET ####################
+# AN ATTEMT TO SIMPLYFI THE ABOVE CODE
+# conn = engine.connect()
+# conn: result = conn.execute(text("Select 'Hello"))
+# print(result.all())
+
+# HERE I CREATED THE DATABASE AND PUT IN A TABLE CALLED agnet_id AND SOME VALUES. 
+# with engine.connect() as conn:
+#     conn.execute(text("CREATE TABLE IF NOT EXISTS Agent_info (id, first_name, last_name, age, time_served)"))
+#     conn.execute(
+#     text("INSERT INTO Agent_info (id, first_name, last_name, age, time_served ) VALUES (:x, :y, :a, :b, :c)"),
+#     [{"x": 1, "y": "John", "a": "Doeh", "b": 30, "c": "" }, {"x": 2, "y": "Ann", "a": "Al", "b": 29, "c": "" }],
+#     )
+#     conn.commit()
+# conn.close()
+
+
+
+# with Session(engine) as session:
+#     result = session.execute(
+#     text("UPDATE agent_info SET id=:y WHERE first_name=:x"),
+#     {"x": "John", "y": 7},
+#     )
+# session.commit()
+
+############## ÖVERGIVET ÅVAN ##############################
+
+
+
+
+
+################ NYTT ###################### PROJEKT ################
+
+______________________________________________________________________________________________________________________________________________________
+# STEG 2
+# SKAPA KONTAKT MED DATABSEN. fil connect_db.py
+
+
+from sqlalchemy import *
+from sqlalchemy.orm import Session
+from sqlalchemy import MetaData
+from sqlalchemy.orm import sessionmaker, declarative_base
+
+engine = create_engine("sqlite:///Agents.db", connect_args={"check_same_thread": False}, echo=True # echo är gött att ha så man ser vad man gör.
+)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+Base = declarative_base() # denna är importerad till models_db 
+______________________________________________________________________________________________________________________________________________________
+
+______________________________________________________________________________________________________________________________________________________
+# STEG 3
+# . fil models_db.py
+
+from sqlalchemy import *
+from sqlalchemy.orm import relationship
+
+
+
+from connect_db import Base
+
+
+class Agents(Base):
+    __tablename__ = "agents"
+
+    id = Column("id", Integer, primary_key=True),
+    agents_id =Column("agent_id", VARCHAR(3)),
+    active_service = Column("active_service", Boolean, default=False), # denna ska då fungera genom att ge "Active" eller "Offline" 
+
+  
+    #items = relationship("Item", back_populates="owner")
+
+
+class Agent_info(Base):
+    __tablename__ = "agent_info"
+
+    id = Column("id", Integer, primary_key=True),
+    first_name = Column("first_name", VARCHAR(100)),
+    lasst_name = Column("last_name", VARCHAR(100)),
+    agent_ID = Column("agent_ID", ForeignKey("agents.agents_id")),
+    time_served = Column("time_served", Time),
+
+    ---------------------------------------------
+    Agent = relationship("Agent_info", back_populates="agents") # denna ska då vid kallning av.. 
+    
+    jag jag fattar inte detta än. Här är den förklarande texten: And when accessing the attribute owner in an Item, it will contain a User SQLAlchemy model from the users table. It will use the owner_id attribute/column with its foreign key to know which record to get from the users table.
+    ----------------------------------
+
+_______________________________________________________________________________________________________________________________________________________________________________
+# STEG 1 
+# SKAPA MODELLER SOM KAN ANVÄDAS FÖR ATT FÅ FRAM INFO OCH SKAPA DATA I DATABASEN. 
+# To avoid confusion between the SQLAlchemy models and the Pydantic models, 
+# we will have the file models.py with the SQLAlchemy models, and the file schemas.py with the Pydantic models.
+# These Pydantic models define more or less a "schema" (a valid data shape).
+# So this will help us avoiding confusion while using both.
+
+
+from pydentic import BaseModel
+
+
+
+
+#__AGENTS_INFO____MODELLER___________________________________________________________________________________
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# en info modell
+class Agenet_infoBase(BaseModel): # Item
+    id: int
+    first_name: str         # orginalet från models_db.py =  first_name = Column("first_name", VARCHAR(100)),
+    lasst_name: str # Union[str, None] = None
+    agent_ID: int 
+    time_served: Time # needs an import  
+
+
+# en skapa modell 
+class Agent_infoCreate(Agenet_infoBase): # Item
+    pass
+
+
+#-------------------------------------------------
+class Agent_info(Agenet_infoBase): # Item
+    id: int
+    first_name: str
+    time_served: Time # needs an import                                  # denna kanske inte behövs. 
+                                                                         # Jag tror att mallen som FastAPI har i sin tutorial är annpasad effter vad den vill få ut av sin "user/item" grej 
+
+    class Config: # jag vet inte vad denna gör??                    
+        orm_mode = True
+#-------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#______________________________________________________________________________________________________________________
+
+
+
+
+#______AGENTS_____MODELLER_____________________________________________________________________________________________
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# en info modell 
+class AgnetsBase(BaseModel): # User 
+    id: int
+    agents_id: int
+    active_service: bool
+
+# en skapa modell
+class AgentsCreate(AgnetsBase): # User 
+    agents_id: int
+    active_service: bool
+
+#-------------------------------------------------
+class Agents(AgnetsBase): # User 
+    agents_id: int
+    active_service: bool                            # denna kanske inte behövs. 
+    
+    class Config: # jag vet inte vad denna gör?? 
+        orm_mode = True
+#-------------------------------------------------
+__________________________________________________________________________________________________
+SIDE NOTE:  Class Config: 
+                                                class Config: 
+                                                        orm_mode = True
+Koden ovan skapar en klass av pydentics config function som ger villkår som går att lägga till i en @dataclass decorator
+VAD ORM = TRUE INNEBÄR VET JAG INTE ÄN 
+__________________________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+________________________________________________________________________________________________________________
+
+
+
+
+________________SCHEMAS__DB.PY_________________________________________________________________________________
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import time
+from pydantic import BaseModel
+
+#__AGENTS_INFO____MODELLER____________________________________________________________
+
+# en info modell / read
+class Agenet_infoBase(BaseModel): # Item
+    id: int
+    first_name: str         # orginalet från models_db.py =  first_name = Column("first_name", VARCHAR(100)),
+    lasst_name: str # Union[str, None] = None
+    agent_ID: int 
+    #time_served: time ###################### needs an import  
+
+
+# en skapa modell 
+class Agent_infoCreate(Agenet_infoBase): # Item
+    pass
+
+
+#-------------------------------------------------
+class Agent_info(Agenet_infoBase): # Item
+    id: int
+    first_name: str
+    # time_served: time # needs an import                                  # denna kanske inte behövs. 
+                                                                         # Jag tror att mallen som FastAPI har i sin tutorial är annpasad effter vad den vill få ut av sin "user/item" grej 
+
+    class Config:                   
+        orm_mode = True # jag vet inte vad denna gör??  
+#-------------------------------------------------
+#___________________________________________________________________________________
+
+#______AGENTS_____MODELLER__________________________________________________________
+
+
+# en info modell /read
+class AgnetsBase(BaseModel): # User 
+    id: int
+    agents_id: int
+    active_service: bool
+
+# en skapa modell
+class AgentsCreate(AgnetsBase): # User 
+    agents_id: int
+    active_service: bool
+
+#-------------------------------------------------
+class Agents(AgnetsBase): # User 
+    agents_id: int
+    active_service: bool                            # denna kanske inte behövs. 
+    
+    class Config: 
+        orm_mode = True # jag vet inte vad denna gör?? 
+#-------------------------------------------------
+
+_______________________________________________________________________________
+SIDE NOTES: jag fick detta felmedelande när jag exciverade koden
+
+Bananberg@LAPTOP-NCTRL65L MINGW64 ~/Desktop/Python_ass/Final_ass2/API (main)
+$ c:/Users/Bananberg/.virtualenvs/api-ldk3itRZ/Scripts/python.exe c:/Users/Bananberg/Desktop/Python_ass/Final_ass2/API/schemas_db.py
+Traceback (most recent call last):
+  File "pydantic\validators.py", line 751, in pydantic.validators.find_validators
+TypeError: issubclass() arg 1 must be a class
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Bananberg\Desktop\Python_ass\Final_ass2\API\schemas_db.py", line 41, in <module>
+    class Agent_info(Agenet_infoBase): # Item
+  File "pydantic\main.py", line 198, in pydantic.main.ModelMetaclass.__new__
+  File "pydantic\fields.py", line 506, in pydantic.fields.ModelField.infer
+  File "pydantic\fields.py", line 436, in pydantic.fields.ModelField.__init__
+  File "pydantic\fields.py", line 557, in pydantic.fields.ModelField.prepare
+  File "pydantic\fields.py", line 831, in pydantic.fields.ModelField.populate_validators
+  File "pydantic\validators.py", line 760, in find_validators
+RuntimeError: error checking inheritance of <module 'time' (built-in)> (type: module)
+______________________________________________________________________________
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+_________________________________________________________________________________________________________________________
+
+
+
+________________API.PY___________________________________________________________________________________________________
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+from fastapi import FastAPI, HTTPException
+from sqlalchemy.orm import Session
+
+import model_db, schemas_db
+from connect_db import SessionLocal, engine
+
+
+
+model_db.Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
+
+# Dependency, förkenkling av koden till höger. 
+def get_db():
+    db = SessionLocal()
+    db.close()                          # Dependency 
+                                        def get_db():
+                                            db = SessionLocal()
+                                            try:
+                                                yield db
+                                            finally:
+                                                db.close()

@@ -37,3 +37,1038 @@ Installing dependencies from Pipfile.lock (f13794)...
 
 Bananberg@LAPTOP-NCTRL65L MINGW64 /c/USers/Bananberg/Desktop/Python_ass/API (main)
 $
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+08/02/2023
+ETT jävla strul med att lista ut hur jag ska koppla min databas till API 
+Försökte lägga in databskapandet i en class och har nu lyckats med det. 
+Ska testa att koppla nu.... 
+
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 22, in <module>
+    app = FastAPI()
+          ^^^^^^^
+NameError: name 'FastAPI' is not defined
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+INFO:     Started server process [9668]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:51433 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51434 - "GET /Agents HTTP/1.1" 404 Not Found
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+INFO:     Started server process [18120]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+INFO:     Started server process [12008]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+Process SpawnProcess-37:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 24, in import_from_string
+    raise exc from None
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 7, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-38:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 24, in import_from_string
+    raise exc from None
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 7, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-39:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 24, in import_from_string
+    raise exc from None
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 7, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+Engine(sqlite:///Agents.db)
+2023-02-07 16:13:12,351 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-02-07 16:13:12,352 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+2023-02-07 16:13:12,353 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:13:12,354 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")     
+2023-02-07 16:13:12,355 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:13:12,357 INFO sqlalchemy.engine.Engine COMMIT
+<class 'db.DB'>
+INFO:     Started server process [5460]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:51502 - "GET /Agents HTTP/1.1" 404 Not Found
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+Engine(sqlite:///Agents.db)
+2023-02-07 16:14:19,035 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-02-07 16:14:19,036 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+2023-02-07 16:14:19,037 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:14:19,039 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")     
+2023-02-07 16:14:19,040 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:14:19,042 INFO sqlalchemy.engine.Engine COMMIT
+<class 'db.DB'>
+INFO:     Started server process [11976]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+Engine(sqlite:///Agents.db)
+2023-02-07 16:19:04,510 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-02-07 16:19:04,511 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+2023-02-07 16:19:04,512 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:19:04,513 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")     
+2023-02-07 16:19:04,514 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:19:04,516 INFO sqlalchemy.engine.Engine COMMIT
+Process SpawnProcess-42:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 40, in <module>
+    @app.get("/") # detta är fråm lektionen med API så fortsätt kolla på den!
+    ^^^
+NameError: name 'app' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Engine(sqlite:///Agents.db)
+2023-02-07 16:20:32,705 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-02-07 16:20:32,705 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+2023-02-07 16:20:32,705 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:20:32,705 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("agents")
+2023-02-07 16:20:32,713 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:20:32,713 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")     
+2023-02-07 16:20:32,713 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:20:32,713 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("agent_info")     
+2023-02-07 16:20:32,713 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-07 16:20:32,713 INFO sqlalchemy.engine.Engine
+CREATE TABLE agents (
+        id INTEGER NOT NULL,
+        agent_id VARCHAR(3),
+        active_service BOOLEAN,
+        PRIMARY KEY (id)
+)
+
+
+2023-02-07 16:20:32,723 INFO sqlalchemy.engine.Engine [no key 0.00282s] ()
+2023-02-07 16:20:32,739 INFO sqlalchemy.engine.Engine 
+CREATE TABLE agent_info (
+        id INTEGER NOT NULL,
+        first_name VARCHAR(100),
+        last_name VARCHAR(100),
+        agent_id INTEGER,
+        active_service TIME,
+        PRIMARY KEY (id),
+        FOREIGN KEY(agent_id) REFERENCES agents (id)
+)
+
+
+2023-02-07 16:20:32,742 INFO sqlalchemy.engine.Engine [no key 0.00303s] ()
+2023-02-07 16:20:32,753 INFO sqlalchemy.engine.Engine COMMIT
+Process SpawnProcess-43:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 24, in import_from_string
+    raise exc from None
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 5, in <module>
+    from db import DB
+ImportError: cannot import name 'DB' from 'db' (C:\USers\Bananberg\Desktop\Python_ass\API\db.py)
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+Process SpawnProcess-44:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+e.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Started server process [10344]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+INFO:     Started server process [23152]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.WARNING:  StatReload detected changes in 'db_connet.py'. Reloading...
+INFO:     Started server process [17076]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'api.py'. Reloading...
+<module 'sqlalchemy.engine' from 'C:\\Users\\Bananberg\\.virtualenvs\\api-MAcX5AkC\\Lib\\site-packages\\sqlalchemy\\engine\\__init__.py'>
+Process SpawnProcess-49:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 9, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 33, in engine
+    meta_data.create_all(engine)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\sqlalchemy\sql\schema.py", line 5558, in create_all
+    bind._run_ddl_visitor(
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'sqlalchemy.engine' has no attribute '_run_ddl_visitor'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+<module 'sqlalchemy.engine' from 'C:\\Users\\Bananberg\\.virtualenvs\\api-MAcX5AkC\\Lib\\site-packages\\sqlalchemy\\engine\\__init__.py'>
+Process SpawnProcess-50:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 58, in <module>
+    meta_data.create_all(engine)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\sqlalchemy\sql\schema.py", line 5558, in create_all
+    bind._run_ddl_visitor(
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'sqlalchemy.engine' has no attribute '_run_ddl_visitor'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+<module 'sqlalchemy.engine' from 'C:\\Users\\Bananberg\\.virtualenvs\\api-MAcX5AkC\\Lib\\site-packages\\sqlalchemy\\engine\\__init__.py'>
+Process SpawnProcess-51:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 58, in <module>
+    meta_data.create_all(engine)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\sqlalchemy\sql\schema.py", line 5558, in create_all
+    bind._run_ddl_visitor(
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'sqlalchemy.engine' has no attribute '_run_ddl_visitor'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-52:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 55, in <module>
+    Column("agent_id", VARCHAR(3)),
+                       ^^^^^^^
+NameError: name 'VARCHAR' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-53:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 21, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 30, in engine
+    Column("agent_id", VARCHAR(3)),
+                       ^^^^^^^
+NameError: name 'VARCHAR' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-54:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 21, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 30, in engine
+    Column("agent_id", VARCHAR(3,0)),
+                       ^^^^^^^
+NameError: name 'VARCHAR' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-55:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 13
+    insert,
+    ^^^^^^
+SyntaxError: invalid syntax
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-56:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 22, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 32, in engine
+    Column("active_service", Boolean, default=False), # denna ska då fungera genom att ge "Active" eller "Offline"
+                            ^^^^^^^
+NameError: name 'Boolean' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-57:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 23, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 43, in engine
+    Column("active_service", Time),
+                             ^^^^
+NameError: name 'Time' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-58:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 24, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 47, in engine
+    print(engine)
+          ^^^^^^
+NameError: name 'engine' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+<module 'sqlalchemy.engine' from 'C:\\Users\\Bananberg\\.virtualenvs\\api-MAcX5AkC\\Lib\\site-packages\\sqlalchemy\\engine\\__init__.py'>
+Process SpawnProcess-59:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 25, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 49, in engine
+    meta_data.create_all(engine)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\sqlalchemy\sql\schema.py", line 5558, in create_all
+    bind._run_ddl_visitor(
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'sqlalchemy.engine' has no attribute '_run_ddl_visitor'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+<class 'db.engine'>
+Process SpawnProcess-60:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 49, in <module>
+    meta_data.create_all(engine)
+    ^^^^^^^^^
+NameError: name 'meta_data' is not defined
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Process SpawnProcess-61:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 25, in <module>
+    class engine:
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 48, in engine
+    meta_data.create_all(engine)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\sqlalchemy\sql\schema.py", line 5558, in create_all
+    bind._run_ddl_visitor(
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'sqlalchemy.engine' has no attribute '_run_ddl_visitor'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+<module 'sqlalchemy.engine' from 'C:\\Users\\Bananberg\\.virtualenvs\\api-MAcX5AkC\\Lib\\site-packages\\sqlalchemy\\engine\\__init__.py'>
+Process SpawnProcess-62:
+Traceback (most recent call last):
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 60, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\config.py", line 477, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bananberg\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\api.py", line 4, in <module>
+    from db import engine
+  File "C:\USers\Bananberg\Desktop\Python_ass\API\db.py", line 73, in <module>
+    meta_data.create_all(engine)
+  File "C:\Users\Bananberg\.virtualenvs\api-MAcX5AkC\Lib\site-packages\sqlalchemy\sql\schema.py", line 5558, in create_all
+    bind._run_ddl_visitor(
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'sqlalchemy.engine' has no attribute '_run_ddl_visitor'
+WARNING:  StatReload detected changes in 'db.py'. Reloading...
+Engine(sqlite:///Agents.db)
+2023-02-08 10:29:42,032 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-02-08 10:29:42,035 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agents")
+2023-02-08 10:29:42,036 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-08 10:29:42,039 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("agent_info")
+2023-02-08 10:29:42,039 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-02-08 10:29:42,041 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Started server process [8196]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
