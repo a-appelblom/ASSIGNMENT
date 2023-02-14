@@ -14,6 +14,7 @@ ___________________
 HÄR KODAS ENLIGT sqlalchemy PRINCIP 
 - Koden här är alla tables och columns som behövs i databasen ( Eller de som jag vill komma åt med hjälp av API senare?? ) 
 - De är skapde i klasser som API kan aknvända sig av ??? 
+### MÅSTE VARA NOGA MED ATT DENNA STÄMMER ÖVERENS MED SCHEMAS_DB
 ________________
 *SCHEMAS_DB.PY
 HÄR KODAS ENLIGT pydentic PRINCIP 
@@ -23,6 +24,21 @@ Tex:        # en info modell
                 id: int
                 agents_id: int
                 active_service: bool            # vad denna säger är kanske att vi, om vi kallar på klassen kan få info om id , agent_id och active_service ?? 
+### MÅSTE VARA NOGA MED ATT DENNA STÄMMER ÖVERENS MED MODELS_DB
+
+________________
+CRUDE.PY
+- In this file we will have reusable functions to interact with the data in the database.
+- CRUD comes from: Create, Read, Update, and Delete.
+
+________________                         
+API.PY
+- Här skapar vi alla routs som vi ska använda i thunderqlient och browsern. 
+http://127.0.0.1:8000 
+
+- 
+
+
 
 
 
@@ -52,7 +68,42 @@ Som i exemplet dataclass
                                                     id: int
                                                     name: str = 'John Doe'
                                                     signup_ts: datetime = None
+                                   
 
 
-                                                                                 
-                                                                                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from sqlalchemy import insert
+
+from model_db import Agents, Agent_info
+
+
+
+query = insert(Agents).values( agents_id="007")
+print(query)
+
+conn = engine.connect()
+result =conn.execute(query)
+conn.commit()
+
+
