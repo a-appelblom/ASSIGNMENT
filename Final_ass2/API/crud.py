@@ -13,6 +13,12 @@ import model_db, schemas_db
 def get_agents(db: Session): # denna kanske är onöding
     return db.query(schemas_db.Agents)
     
+def add_agent(agent: schemas_db.Agent, db: Session):
+    new_agent=model_db.Agent_info(**agent)
+    db.add(new_agent)
+    db.commit()
+    db.refresh(new_agent)
+    return new_agent
 
 
 # # denna är från min api.py fil och ska hämta från filen åvan här. 

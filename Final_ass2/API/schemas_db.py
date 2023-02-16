@@ -1,3 +1,4 @@
+
 # STEG 3 
 
 # To avoid confusion between the SQLAlchemy models and the Pydantic models, 
@@ -27,6 +28,13 @@
 
 import time ##
 from pydantic import BaseModel
+class Agent(BaseModel):
+    id: int = None
+    first_name: str
+    last_name: str
+    agent_ID: int
+    time_served: int
+    pass
 
 
 

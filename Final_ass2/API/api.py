@@ -19,7 +19,15 @@ model_db.Base.metadata.create_all(bind=engine)
 # Dependency
 def get_db():
     db = SessionLocal()
-    db.close()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@app.post("/create_antons_agent")
+def create_antons_agent(agent: schemas_db.Agent, db: Session = Depends(get_db)):
+    data = crud.create_agent(db, agent)
+    return data
 
 
 #______________DETTA ÄR FRÅN ANTONS API FILER___________________-
