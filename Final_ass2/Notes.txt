@@ -1,3 +1,7 @@
+######################################################
+FÖLJADE ÄR SKAPAT I DEN VIRTUELLA MILJÖN: api-ldk3itRZ
+######################################################
+
 
 
 - jag startar pipenv 
@@ -72,14 +76,67 @@ Som i exemplet dataclass
 
 
 
+DAGBOK: 
+
+15/02/2023 
+
+- Jag jobbar på att få funcitonerna i CRUD.py att funka.
+- så att det funkar i API.py också. 
+
+update 
+- jag har fått routs att funka den enkla vägen. 
+.post(populate 
+.post(populate2 
+.get(Agents 
+Dessa funkar utmärkt i både browsern och thunderqlient. 
+- nästa steg är ju att jiddra med JSON, varför? 
 
 
+*NU håller jag på att försöka på mina mer anvancerade routs att funka. 
+De som byggdes genom:
+- model.py - crud.py - api.py. 
+Dessa vill inte riktigt prata med varandra och jag håller på att tweeka dem så det funkar att:
+
+ta fram alla agenter i agnets tablen. 
+
+ta fram alla agenter i Agent_info tablen. 
+
+# DETTA ÄR ERROREN JAG FÅR NÄR JAG FÖRSÖKER KÖRA @app.get("/all_agents_id") i api filen. 
+
+                INFO:     127.0.0.1:62862 - "GET /all_agents_id HTTP/1.1" 500 Internal Server Error
+                ERROR:    Exception in ASGI application
+                Traceback (most recent call last):
+                File "C:\Users\Bananberg\.virtualenvs\api-ldk3itRZ\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 407, in run_asgi
+                    result = await app(  # type: ignore[func-returns-value]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+                            [....]
+
+                File "C:\Users\Bananberg\.virtualenvs\api-ldk3itRZ\Lib\site-packages\anyio\_backends\_asyncio.py", line 937, in run_sync_in_worker_thread
+                    return await future
+                        ^^^^^^^^^^^^
+                File "C:\Users\Bananberg\.virtualenvs\api-ldk3itRZ\Lib\site-packages\anyio\_backends\_asyncio.py", line 867, in run
+                    result = context.run(func, *args)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^
+                File "C:\Users\Bananberg\Desktop\Python_ass\Final_ass2\API\api.py", line 104, in read_agents
+                    agents = crud.get_agents(db) # DETTA BLEV ETT FEL VID ANVÄNDING I BROWSER. missing one positional argument.
+                            ^^^^^^^^^^^^^^^^^^^
+                File "C:\Users\Bananberg\Desktop\Python_ass\Final_ass2\API\crud.py", line 14, in get_agents
+                    return db.query(model_db.Agents)
+                        ^^^^^^^^
+                AttributeError: 'NoneType' object has no attribute 'query'
+                File "C:\Users\Bananberg\Desktop\Python_ass\Final_ass2\API\crud.py", line 14, in get_agents
+                    return db.query(model_db.Agents)
+                        ^^^^^^^^
+                AttributeError: 'NoneType' object has no attribute 'query'
+                                ##########################################
 
 
+Som jag förstår det ligger felet mellan crud filen och model_db filen. Vad vet jag inte än ... 
 
 
-
-
+När jag inspekterar SCHEMAS_DB ser jag också att om jag ändra: class Agent_infoBase(BaseModel): till: class Agent_infoBase(Base): 
+Vill den attajg importerar base modellen från CONNECT_BD... Vad kan det bero på? 
 
 
 

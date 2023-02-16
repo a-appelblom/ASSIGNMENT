@@ -37,7 +37,7 @@ class Agent_info(Base): # Item
     time_served = Column(Time) # denna ska vara kopplad till en funktion som visar tiden som "uppdraget" har tagit. 
 
 
-    Agent = relationship("Agent_info", back_populates="agents") # denna ska då vid kallning av Agnet ge info från agent_info och agents 
+    # Agent = relationship("Agent_info", back_populates="agents") # denna ska då vid kallning av Agnet ge info från agent_info och agents 
                                                                 # eller data som valjs från Agent_info ger relationell info fron angets också 
 
 

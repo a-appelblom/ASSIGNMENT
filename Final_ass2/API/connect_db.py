@@ -7,7 +7,6 @@
 from sqlalchemy import *
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-from schemas_db import Agents
 
 engine = create_engine("sqlite:///Agents.db", connect_args={"check_same_thread": False}, echo=True # echo är gött att ha så man ser vad man gör.
 )

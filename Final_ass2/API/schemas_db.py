@@ -33,7 +33,7 @@ from pydantic import BaseModel
 #__AGENTS_INFO____MODELLER____________________________________________________________
 
 # en info modell / read
-class Agenet_infoBase(BaseModel): # Item
+class Agent_infoBase(BaseModel): # Item
     id: int
     first_name: str         # orginalet från models_db.py =  first_name = Column("first_name", VARCHAR(100)),
     last_name: str # Union[str, None] = None
@@ -42,14 +42,14 @@ class Agenet_infoBase(BaseModel): # Item
 
 
 # en skapa modell 
-class Agent_infoCreate(Agenet_infoBase): # Item
+class Agent_infoCreate(Agent_infoBase): # Item
     first_name: str         # orginalet från models_db.py =  first_name = Column("first_name", VARCHAR(100)),
     last_name: str # Union[str, None] = None
     agent_ID: str 
 
 
 #-------------------------------------------------
-class Agent_info(Agenet_infoBase): # Item
+class Agent_info(Agent_infoBase): # Item
     id: int
     first_name: str
     time_served: int # needs an import                                  # denna kanske inte behövs. 
@@ -69,25 +69,26 @@ class Agent_info(Agenet_infoBase): # Item
 
 
 # en info modell /read
-class AgnetsBase(BaseModel): # User 
-    id: int
+class AgentsBase(BaseModel): # User 
     agents_id: str
     active_service: bool
+    
+    class Config: 
+        orm_mode = True 
 
 # en skapa modell
-class AgentsCreate(AgnetsBase): # User 
+class AgentsCreate(AgentsBase): # User 
     agents_id: str
     active_service: bool
 
 #-------------------------------------------------
-class Agents(AgnetsBase): # User 
+class Agents(AgentsBase): # User 
     agents_id: str
-    active_service: bool                            # denna kanske inte behövs. 
+    active_service: bool                            
     
     class Config: 
         orm_mode = True # jag vet inte vad denna gör?? 
 #-------------------------------------------------
-
 
 
 
